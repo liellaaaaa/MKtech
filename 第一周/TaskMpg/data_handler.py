@@ -9,8 +9,14 @@
 import json
 import os
 
-# 任务文件路径
-TASKS_FILE = "tasks.txt"
+# 获取当前脚本所在目录的绝对路径
+script_dir = os.path.dirname(os.path.abspath(__file__))
+# 任务文件路径 - 直接使用当前目录下的tasks.txt文件
+TASKS_FILE = os.path.join(script_dir, "tasks.txt")
+
+# 添加调试信息帮助排查问题
+print(f"调试：脚本目录路径: {script_dir}")
+print(f"调试：任务文件完整路径: {TASKS_FILE}")
 
 def load_tasks():
     """

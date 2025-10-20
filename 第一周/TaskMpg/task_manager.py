@@ -39,7 +39,16 @@ def main():
             if choice == '1':
                 # 添加任务
                 task_content = input("请输入任务内容: ")
-                priority = input("请输入优先级 (高/中/低，默认为中): ").strip() or "中"
+                priority_input = input("请输入优先级 (高/中/低，默认为中): ").strip()
+                # 如果用户直接按回车，使用默认值
+                if not priority_input:
+                    priority = "中"
+                # 检查输入是否为有效优先级
+                elif priority_input in ["高", "中", "低"]:
+                    priority = priority_input
+                else:
+                    print("❌ 无效的优先级，请输入'高'、'中'或'低'")
+                    continue    
                 add_task(tasks, task_content, priority)
                 save_tasks(tasks)  # 自动保存
                 print("✅ 任务添加成功！")
